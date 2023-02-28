@@ -1,0 +1,15 @@
+*
+!admins/
+!banks/
+!card-issuers/
+!cards/
+!banks/
+!help-categories/
+!main-banner-ads/
+!payment-methods/
+!products/
+!settings/
+!store-categories/
+!users/
+!stores/
+!.gitignore
