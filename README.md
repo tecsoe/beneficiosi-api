@@ -93,4 +93,87 @@ Cada modulo dentro de **src** suele contener las siguientes carpetas y archivos:
 
     Archivo donde se registran las dependencias de cada módulo y se inicializan otros módulos externos a él mismo
 
+## Módulos
+
+### ads-positions
+Gestiona las bicaciones de los anuncios en la página.
+
+Los endpoints de este módulo son:
+
+**GET /ad-positions**
+    
+Devuelve las ubicaciones de anuncios páginados
+
+Requiere autenticación: No
+
+Rol de usuario requerido: No requiere rol 
+
+Parametros de query string:
+
+- **page**: indica la página de resultados que se quiere obtener
+- **perPage**: indica cuantos resultados se requiren por página
+
+Ejemplo de petición con curl:
+
+```bash
+curl --location --request GET 'http://localhost:3000/ad-positions'
+```
+
+---
+
+### ads
+
+Gestiona los anuncios publicitarios que se muestran en la página
+
+Los endpoints de este módulo son:
+
+**GET /ads**
+
+Devuelve los anuncios publicitarios páginados
+
+Requiere autenticación: No
+
+Rol de usuario requerido: No requiere rol
+
+Parametros de query string:
+- **page**: indica la página de resultados que se quiere obtener
+- **perPage**: indica cuantos resultados se requiren por página
+- **id**: filtra por id de anuncio
+
+Ejemplo de petición con curl:
+
+```bash
+curl --location 'http://localhost:3000/ads?date=2021-06-25%2012%3A00%3A00'
+```
+### Respuesta de ejecución
+```
+{
+  "results": [
+    {
+      "id": 1,
+      "imagePath": "uploads\\users\\1624647745211-934142862.png",
+      "title": "el titulo modificado",
+      "description": "esta es la description",
+      "url": "http://laurl.com",
+      "from": "2021-06-25 12:00:00",
+      "until": "2021-06-26 12:00:00",
+      "price": "250.00"
+    }
+  ],
+  "total": 1,
+  "size": 10,
+  "numberOfPages": 1
+}
+```
+
+
+
+
+
+
+
+
+
+
+
 
