@@ -413,7 +413,7 @@ curl --location 'http://localhost:3000/auth/login-store' \
     "email": "latiendecita@gmail.com",
     "password": "password"
 }'
-
+```
 Ejemplo de respuesta:
 
 ```
