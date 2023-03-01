@@ -287,3 +287,81 @@ Ejemplo de petición con curl:
 ```bash
 curl --location --request DELETE 'http://localhost:3000/ads/1'
 ```
+---
+
+### auth
+
+Gestiona lo relacionado con autenticación
+
+Los endpoints de este modulo son:
+
+**POST /auth/loging**
+
+Usado para iniciar sesión a un cliente, retorna un JWT
+
+Requiere autenticación: No
+
+Rol de usuario requerido: No requiere rol
+
+Ejemplo de petición con curl:
+
+```
+curl --location 'http://localhost:3000/auth/login' \
+--data-raw '{
+    "email": "tridant16@gmail.com",
+    "password": "123456789"
+}'
+```
+
+Ejemplo de Respuesta:
+
+```
+{
+  "user": {
+    "id": 68,
+    "email": "tridant16@gmail.com",
+    "userStatus": {
+      "code": "urs-001",
+      "name": "activo"
+    },
+    "name": "Jeyver Vegas",
+    "phoneNumber": "+584244699385",
+    "imgPath": "uploads/users/1628711723481-24515101.jpg"
+  },
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjgsImVtYWlsIjoidHJpZGFudDE2QGdtYWlsLmNvbSIsInJvbGUiOiJDTElFTlQiLCJ1c2VyU3RhdHVzIjp7ImNvZGUiOiJ1cnMtMDAxIiwibmFtZSI6ImFjdGl2byJ9LCJjbGllbnQiOnsibmFtZSI6IkpleXZlciBWZWdhcyIsInBob25lTnVtYmVyIjoiKzU4NDI0NDY5OTM4NSIsImltZ1BhdGgiOiJ1cGxvYWRzL3VzZXJzLzE2MzI0MTAwMzIzOTgtNTY4NDc3ODU4LmpwZyJ9LCJzdG9yZSI6bnVsbCwiYWRtaW4iOm51bGwsImlhdCI6MTYzNTM0NTc0NCwiZXhwIjoxNjM3OTM3NzQ0fQ.y_D_828ZTEBi2qa66CGB18Hzt5eMgxxBWy3j3u6l3FY"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
