@@ -560,6 +560,8 @@ curl --location 'http://localhost:3000/auth/reset-store-password' \
 
 Gestiona los tipos de banco
 
+Los endpoints de este módulo son:
+
 **POST /bank-account-types**
 
 Se enrcarga de crear un tipo de cuenta bancaria
@@ -584,4 +586,35 @@ Ejemplo de respuesta:
   "name": "Cuenta juridica"
 }
 ```
+**GET /bank-account-types**
 
+Devuelve toda la información de los tipos de cuentas bancarias
+
+Requiere autenticación sobre un anuncio publicitario
+
+Rol de usuario requerido: No requiere rol
+
+Ejemplo de petición con curl:
+
+```bash
+curl --location 'http://localhost:3000/bank-account-types'
+```
+
+Ejemplo de respuesta:
+```
+{
+  "results": [
+    {
+      "id": 1,
+      "name": "Cuenta unica"
+    },
+    {
+      "id": 2,
+      "name": "Cuenta juridica"
+    }
+  ],
+  "total": 2,
+  "size": 10,
+  "numberOfPages": 1
+}
+```
