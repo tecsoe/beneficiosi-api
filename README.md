@@ -42,4 +42,55 @@ npm run start:dev
 ```
 El projecto correra en [http://localhost:3000](http:://localhost:3000)
 
+## Estructura de directorios
+- **src**
+
+    Contiene todos los modulos del proyecto, es decir, en él se almacena todo el código fuente
+
+- **templates**
+
+    Contiene los templates en de handlebars para envio de correos y otras cosas similares
+
+- **test**
+
+    Contiene los test automatizados del proyecto
+
+- **uploads**
+
+    Contiene los archivos que se suben al sistema
+
+Cada modulo dentro de **src** suele contener las siguientes carpetas y archivos:
+
+- **decorators**
+
+    Contiene los [decorators](https://docs.nestjs.com/custom-decorators) perzonalizados de nest usados en el módulo
+
+- **dto**
+
+    Contiene los Data Transfer Object (DTO) del módulo que sirven para estandarizar la data que se devuelve al usuario y además se usan para validar la data que ingresa en cada endpoint
+    
+- **entities**
+
+    Contiene las entidades de [TypeORM](https://typeorm.io/) correspondientes a las tablas en la base de datos
+
+- **errors**
+
+    Contiene las excepciónes que puede llegar a arrojar un módulo
+    
+- **pipes**
+
+    Contiene las [pipes](https://docs.nestjs.com/pipes) perzonalizadas de nest usadas en el módulo, generalmente tiene por lo menos un pipe de paginación de resultados
+
+- **nombre-de-modulo.controller.ts**
+
+    Archivo donde se definen las rutas o urls disponibles en la aplicación
+
+- **nombre-de-modulo.service.ts**
+
+    Archivo donde se ejecuta la lógica de negocio correspondiente a cada endpoint, los servicios son ejecutados normalmente por métodos dentro de un controlador
+
+- **nombre-de-modulo.module.ts**
+
+    Archivo donde se registran las dependencias de cada módulo y se inicializan otros módulos externos a él mismo
+
 
