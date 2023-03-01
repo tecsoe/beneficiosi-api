@@ -145,7 +145,8 @@ Ejemplo de petición con curl:
 ```bash
 curl --location 'http://localhost:3000/ads?date=2021-06-25%2012%3A00%3A00'
 ```
-### Respuesta de ejecución
+
+Ejemplo de Respuesta
 ```
 {
   "results": [
