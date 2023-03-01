@@ -166,15 +166,124 @@ Ejemplo de Respuesta
   "numberOfPages": 1
 }
 ```
+**POST /ads**
 
+Crea anuncios publicitarios
 
+Requiere autenticación: Si
 
+Rol de usuario requerido: ADMIN
 
+Ejemplo de petición con curl: 
 
+```bash
+curl --location 'http://localhost:3000/ads' \
+--form 'image=@"/C:/Users/Original/Desktop/MasterCard-Logo.png"' \
+--form 'title="el titulo"' \
+--form 'description="esta es la description"' \
+--form 'url="http://laurl.com"' \
+--form 'from="2021-06-25 12:00:00"' \
+--form 'until="2021-06-26 12:00:00"' \
+--form 'price="250"' \
+--form 'storeId="1"' \
+--form 'adsPositionId="1"'
+```
 
+Ejemplo de Respuesta:
 
+```
+{
+  "id": 1,
+  "imagePath": "uploads\\users\\1624647745211-934142862.png",
+  "title": "el titulo",
+  "description": "esta es la description",
+  "url": "http://laurl.com",
+  "from": "2021-06-25T16:00:00.000Z",
+  "until": "2021-06-26T16:00:00.000Z",
+  "price": 250,
+  "storeId": "1",
+  "adsPositionId": "1"
+}
+```
 
+**GET /ads/:id**
 
+Devuelve información sobre un anuncio publicitario
 
+Requiere autenticación: No
 
+Rol de usuario requerido: No requiere rol
 
+Ejemplo de petición con curl:
+
+```bash
+curl --location 'http://localhost:3000/ads/1'
+```
+
+Ejemplo de respuesta:
+
+```
+{
+  "id": 1,
+  "imagePath": "uploads\\users\\1624647745211-934142862.png",
+  "title": "el titulo",
+  "description": "esta es la description",
+  "url": "http://laurl.com",
+  "from": "2021-06-25T16:00:00.000Z",
+  "until": "2021-06-26T16:00:00.000Z",
+  "price": "250.00"
+}
+```
+**PUT /ads/:id**
+
+Actualiza un anuncios publicitario
+
+Requiere autenticación: Si
+
+Rol de usuario requerido: ADMIN
+
+Ejemplo de petición con curl:
+
+```bash
+curl --location 'http://localhost:3000/ads' \
+--form 'image=@"/C:/Users/Original/Desktop/MasterCard-Logo.png"' \
+--form 'title="el titulo"' \
+--form 'description="esta es la description"' \
+--form 'url="http://laurl.com"' \
+--form 'from="2021-06-25 12:00:00"' \
+--form 'until="2021-06-26 12:00:00"' \
+--form 'price="250"' \
+--form 'storeId="1"' \
+--form 'adsPositionId="1"'
+```
+
+Ejemplo de Respuesta:
+
+```
+{
+  "id": 1,
+  "imagePath": "uploads\\users\\1624647745211-934142862.png",
+  "title": "el titulo",
+  "description": "esta es la description",
+  "url": "http://laurl.com",
+  "from": "2021-06-25T16:00:00.000Z",
+  "until": "2021-06-26T16:00:00.000Z",
+  "price": 250,
+  "storeId": "1",
+  "adsPositionId": "1"
+}
+```
+
+**DELETE /ads/:id**
+
+Elimina un anuncio publicitario
+
+Requiere autenticación: Si
+
+Rol de usuario requerido: ADMIN
+
+Ejemplo de petición con curl:
+
+```bash
+curl --location --request DELETE 'http://localhost:3000/ads/1'
+```
