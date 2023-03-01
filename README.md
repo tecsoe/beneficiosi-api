@@ -332,36 +332,256 @@ Ejemplo de Respuesta:
 }
 ```
 
+**POST /auth/register**
 
+Registra un nuevo usuario de tipo cliente
 
+Requiere autenticación: No
 
+Rol de usuario requerido: No requiere rol
 
+Ejemplo de petición con curl:
 
+```bash
+curl --location 'http://localhost:3000/auth/register' \
+--data-raw '{
+    "name": "Alexis Navarro",
+    "email": "ruben@gmail.com",
+    "phoneNumber": "+584261249733",
+    "password": "password"
+}'
+```
 
+**POST /auth/register-store**
 
+Registra una tienda 
 
+Requiere autenticación: No
 
+Rol de usuario requerido: No requiere rol
 
+Ejemplo de petición con curl:
 
+```bash
+curl --location 'http://localhost:3000/auth/register-store' \
+--data-raw '{
+    "name": "La tiendecita",
+    "email": "latiendecita@gmail.com",
+    "phoneNumber": "+584261249733",
+    "password": "password",
+    "address": "La dirección de la tienda",
+    "latitude": 10.646465,
+    "longitude": 65.545456,
+    "storeCategoryId": 4
+}'
+```
 
+Ejemplo de Respuesta:
 
+```
+{
+  "user": {
+    "id": 88,
+    "email": "latiendecita@gmail.com",
+    "name": "La tiendecita",
+    "slug": "la-tiendecita-1635791370714",
+    "phoneNumber": "+584261249733",
+    "address": "La dirección de la tienda",
+    "latitude": 10.646465,
+    "longitude": 65.545456,
+    "storeId": 59,
+    "isFavorite": false,
+    "rating": 0
+  },
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhdGllbmRlY2l0YUBnbWFpbC5jb20iLCJyb2xlIjoiU1RPUkUiLCJ1c2VyU3RhdHVzQ29kZSI6InVycy0wMDEiLCJzdG9yZSI6eyJuYW1lIjoiTGEgdGllbmRlY2l0YSIsInNsdWciOiJsYS10aWVuZGVjaXRhLTE2MzU3OTEzNzA3MTQiLCJwaG9uZU51bWJlciI6Iis1ODQyNjEyNDk3MzMiLCJhZGRyZXNzIjoiTGEgZGlyZWNjacOzbiBkZSBsYSB0aWVuZGEiLCJzdG9yZUNhdGVnb3J5SWQiOjQsImxhdGl0dWRlIjoxMC42NDY0NjUsImxvbmdpdHVkZSI6NjUuNTQ1NDU2LCJsb2NhdGlvbiI6IlBPSU5UKDEwLjY0NjQ2NSA2NS41NDU0NTYpIiwidXNlcklkIjo4OCwiaWQiOjU5LCJyYXRpbmciOjB9LCJkZWxldGVkQXQiOm51bGwsImlkIjo4OCwiY3JlYXRlZEF0IjoiMjAyMS0xMS0wMVQxODoyOTozMC44MDZaIiwidXBkYXRlZEF0IjoiMjAyMS0xMS0wMVQxODoyOTozMC44MDZaIiwiaWF0IjoxNjM1NzkxMzcxLCJleHAiOjE2MzgzODMzNzF9.qCctmNQj12ACXhtH7gs7Dbp5WKHBhvl0-gKisCaVudw"
+}
+```
 
+**POST /auth/login-store**
 
+Usado para iniciar sesión a una tienda, retorna un JWT
 
+Requiere autenticación: No
 
+Rol de usuario requerido: no requiere rol
 
+Ejemplo de petición con curl:
 
+```bash
+curl --location 'http://localhost:3000/auth/login-store' \
+--data-raw '{
+    "email": "latiendecita@gmail.com",
+    "password": "password"
+}'
 
+Ejemplo de respuesta:
 
+```
+{
+  "user": {
+    "id": 50,
+    "email": "macdonalds@gmail.com",
+    "userStatus": {
+      "code": "urs-001",
+      "name": "activo"
+    },
+    "name": "MacDonalds",
+    "slug": "la-tiendecita-162808016915931232",
+    "phoneNumber": "+584244699385",
+    "address": "McDonald's Automac, Mar del Plata, Provincia de Buenos Aires, Argentina",
+    "latitude": -38.025715,
+    "longitude": -57.532,
+    "storeId": 36,
+    "storeProfile": {
+      "whatsapp": "+584261249733",
+      "instagram": "https://www.instagram.com/enparalelovzla/?hl=es-la",
+      "facebook": "https://es-la.facebook.com/",
+      "videoUrl": "https://www.youtube.com/watch?v=4j234234saf23f",
+      "shortDescription": "esta es la descripcion corta",
+      "description": "descripcion",
+      "banner": "uploads/stores/1626444729210-434861736.png",
+      "frontImage": "uploads/stores/1626444729226-525238371.png",
+      "logo": "uploads/stores/1626444729222-144854791.png"
+    }
+  },
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjEsImVtYWlsIjoibWFjQGdtYWlsLmNvbSIsInJvbGUiOiJTVE9SRSIsInVzZXJTdGF0dXMiOnsiY29kZSI6InVycy0wMDEiLCJuYW1lIjoiYWN0aXZvIn0sImNsaWVudCI6bnVsbCwic3RvcmUiOnsiaWQiOjQyLCJuYW1lIjoiTWFjIiwic2x1ZyI6Im1hYyIsInBob25lTnVtYmVyIjoiKzU0MTEyMzkxNjczNCIsImFkZHJlc3MiOiJKdW5jYWwgMjkzMCwgQzE0MjUgQVlMLCBCdWVub3MgQWlyZXMsIEFyZ2VudGluYSIsImxhdGl0dWRlIjoiLTM0LjU4NzgwMSIsImxvbmdpdHVkZSI6Ii01OC40MDY4MjQiLCJyYXRpbmciOjAsInN0b3JlQ2F0ZWdvcnlJZCI6MSwic3RvcmVDYXRlZ29yeSI6eyJpZCI6MSwibmFtZSI6Imdhc3Ryb25vbWlhIiwiaW1nUGF0aCI6Ii91cGxvYWRzL3N0b3JlLWNhdGVnb3JpZXMvZ2FzdHJvbm9taWEuanBnIn0sInN0b3JlUHJvZmlsZSI6bnVsbH0sImFkbWluIjpudWxsLCJpYXQiOjE2MzUzNDgxOTMsImV4cCI6MTYzNzk0MDE5M30.lBC5VgywsrHMOgjvb-M3J7ocfliLaVTOjaxqHLYZuXo"
+}
+```
 
+**POST /auth/login-admin**
 
+Usado para iniciar sesión a un administrador, retorna un JWT
 
+Requiere autenticación: No
 
+Rol de usuario requerido: No requiere rol
 
+Ejemplo de petición con curl:
 
+```bash
+curl --location 'http://localhost:3000/auth/login-admin' \
+--data-raw '{
+    "email": "admin@admin.com",
+    "password": "password"
+}'
+```
 
+Ejemplo de Respuesta:
 
+```
+{
+  "user": {
+    "id": 1,
+    "email": "admin@admin.com",
+    "role": "ADMIN",
+    "userStatus": {
+      "code": "urs-001",
+      "name": "activo"
+    },
+    "name": "Alexis Navarro",
+    "phoneNumber": "+584244699385",
+    "address": "las casitas",
+    "imgPath": "uploads/admins/1626368050950-193305278.png"
+  },
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJyb2xlIjoiQURNSU4iLCJ1c2VyU3RhdHVzIjp7ImNvZGUiOiJ1cnMtMDAxIiwibmFtZSI6ImFjdGl2byJ9LCJjbGllbnQiOm51bGwsInN0b3JlIjpudWxsLCJhZG1pbiI6eyJuYW1lIjoiQmVuZWZpY2lvU2kiLCJwaG9uZU51bWJlciI6Iis1ODQyNDQ2OTkzODUiLCJhZGRyZXNzIjoibGFzIGNhc2l0YXMiLCJpbWdQYXRoIjoidXBsb2Fkcy9hZG1pbnMvMTYyNjM2ODA1MDk1MC0xOTMzMDUyNzgucG5nIn0sImlhdCI6MTYzMTAzMzYyNywiZXhwIjoxNjMzNjI1NjI3fQ.e93Syud4uc1mOQhPyTat_JYpvgBPnQ0oBV5G6FJmwy0"
+}
+```
 
+**POST /auth/forgot-client-password**
 
+Envia un correo electronico a la dirección proporcionada para recuperar la contraseña del cliente
 
+Requiere autenticación: No
+
+Ejemplo de petición con curl:
+
+```bash
+curl --location 'http://localhost:3000/auth/forgot-password' \
+--data-raw '{
+    "email": "alexthebigboss1@gmail.com"
+}'
+```
+
+**POST /auth/reset-password**
+
+Resetea la contraseña del usuario después de hacer varias verificaciones
+
+Requiere autenticación: No
+
+Rol de usuario requerido: No requiere rol
+
+Ejemplo de petición con curl:
+
+```bash
+curl --location 'http://localhost:3000/auth/reset-client-password' \
+--data-raw '{
+    "email": "alexthebigboss1@gmail.com",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZW1haWwiOiJhbGV4dGhlYmlnYm9zczFAZ21haWwuY29tIiwiaWF0IjoxNjI2ODk1MDA1LCJleHAiOjE2MjY5MzgyMDV9.Al-7UcwWC-5ak1XubDHG3awxGv9fcoobyBX2DoeoCnM",
+    "password": "12345678"
+}'
+```
+
+**POST /auth/forgot-store-password**
+
+Envia un correo electronico a la dirección proporcionada para recuperar la contraseña de la tienda
+
+Requiere autenticación: No
+
+Ejemplo de petición con curl:
+
+```bash
+curl --location 'http://localhost:3000/auth/forgot-store-password' \
+--data-raw '{
+    "email": "alexisnavarro1994@gmail.com"
+}'
+```
+
+**POST /auth/reset-store-password**
+
+Resetea la contraseña del usuario de tienda después de hacer varias verificaciones
+
+Requiere autenticación: No
+
+Rol de usuario requerido: No requiere rol
+
+Ejemplo de petición con curl:
+
+```bash
+curl --location 'http://localhost:3000/auth/reset-store-password' \
+--data-raw '{
+    "email": "alexisnavarro1994@gmail.com",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZW1haWwiOiJhbGV4aXNuYXZhcnJvMTk5NEBnbWFpbC5jb20iLCJpYXQiOjE2MjY5NzA0NTIsImV4cCI6MTYyNzAxMzY1Mn0.nV-PUkzDjRJXpjYDF6PCXAdLzMzPTVyrGY9nECx31Ew",
+    "password": "12345678"
+}'
+```
+---
+
+### bank account porposes
+
+Gestiona los tipos de banco
+
+**POST /bank-account-types**
+
+Se enrcarga de crear un tipo de cuenta bancaria
+
+Requiere autenticación: No
+
+Rol de usuario requerido: No requiere ningun rol.
+
+Ejemplo de petición con curl:
+
+```bash
+curl --location 'http://localhost:3000/bank-account-types' \
+--data '{
+    "name": "Cuenta juridica"
+}'
+```
+
+Ejemplo de respuesta:
+```
+{
+  "id": 2,
+  "name": "Cuenta juridica"
+}
+```
 
