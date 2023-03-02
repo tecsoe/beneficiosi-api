@@ -93,9 +93,9 @@ Cada modulo dentro de **src** suele contener las siguientes carpetas y archivos:
 
     Archivo donde se registran las dependencias de cada módulo y se inicializan otros módulos externos a él mismo
 
-## Módulos
+# Módulos
 
-# ads-positions
+## ads-positions
 Gestiona las bicaciones de los anuncios en la página.
 
 Los endpoints de este módulo son:
@@ -121,7 +121,7 @@ curl --location --request GET 'http://localhost:3000/ad-positions'
 
 ---
 
-### ads
+## ads
 
 Gestiona los anuncios publicitarios que se muestran en la página
 
@@ -289,7 +289,7 @@ curl --location --request DELETE 'http://localhost:3000/ads/1'
 ```
 ---
 
-### auth
+## auth
 
 Gestiona lo relacionado con autenticación
 
@@ -556,7 +556,7 @@ curl --location 'http://localhost:3000/auth/reset-store-password' \
 ```
 ---
 
-### bank account porposes
+## bank account types
 
 Gestiona los tipos de banco
 
@@ -616,5 +616,25 @@ Ejemplo de respuesta:
   "total": 2,
   "size": 10,
   "numberOfPages": 1
+}
+```
+
+**GET /bank-account-types/:id**
+
+Devuelve información sobre un identificador del usuario de un tipo de trajeta bancaria
+
+Requiere autenticación: No
+
+Rol de usuario requerido: no requiere rol
+
+Ejemplo de petición con curl:
+
+```bash
+curl --location 'http://localhost:3000/bank-account-types/2'
+```
+```bash
+{
+  "id": 2,
+  "name": "Cuenta juridica"
 }
 ```
