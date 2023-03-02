@@ -95,7 +95,7 @@ Cada modulo dentro de **src** suele contener las siguientes carpetas y archivos:
 
 ## Módulos
 
-### ads-positions
+# ads-positions
 Gestiona las bicaciones de los anuncios en la página.
 
 Los endpoints de este módulo son:
