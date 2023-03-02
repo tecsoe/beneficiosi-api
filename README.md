@@ -632,7 +632,10 @@ Ejemplo de petición con curl:
 ```bash
 curl --location 'http://localhost:3000/bank-account-types/2'
 ```
-```bash
+
+Ejemplo de respuesta:
+
+```
 {
   "id": 2,
   "name": "Cuenta juridica"
